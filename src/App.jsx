@@ -19,6 +19,11 @@ function App() {
       )
     })
   }
+  function deleteTask(id) {
+    setTask(currentTask => {
+      return currentTask.filter(todo => todo.id !== id)
+    })
+  }
   return (
     <>
     <div className="app">
