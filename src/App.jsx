@@ -1,9 +1,17 @@
 function App() {
-
+  const [newTask, createNewTask] = useState("")
+  const [todos, setTask] = useState([])
+  function handleSubmit(e) {
+    e.preventDefault()
+    setTask(currentTask => {
+      return [...currentTask, { id: crypto.randomUUID(), title: newTask, completed: false }]
+    })
+    createNewTask("")
+  }
   return (
     <>
     <div className="app">
-        <form>
+        <form onChange={handleSubmit}>
           <div>
             <label htmlFor="ToDo">Create New ToDo</label>
             <input type="text" name="ToDo" id="ToDo" />
