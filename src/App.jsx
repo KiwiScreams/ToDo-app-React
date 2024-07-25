@@ -1,4 +1,6 @@
-function App() {
+import { useState } from "react"
+import "./style.css"
+export default function App() {
   const [newTask, createNewTask] = useState("")
   const [todos, setTask] = useState([])
   function handleSubmit(e) {
@@ -26,16 +28,15 @@ function App() {
   }
   return (
     <>
-    <div className="app">
+      <div className="app">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="container">
             <label htmlFor="ToDo">Create New ToDo</label>
             <input type="text" name="ToDo" id="ToDo" value={newTask}
-              onChange={e => createNewTask(e.target.value)} />
+              onChange={e => createNewTask(e.target.value)} className="todo-input" placeholder="Create new todo..."/>
+              <button className="add-btn"><i class="fa-solid fa-plus"></i></button>
           </div>
-          <button>Add</button>
         </form>
-        <h1>ToDo List</h1>
         <ul>
           {todos.length === 0 && "No ToDos"}
           {todos.map(todo => {
@@ -53,5 +54,3 @@ function App() {
     </>
   )
 }
-
-export default App
