@@ -8,26 +8,41 @@ function App() {
     })
     createNewTask("")
   }
+  function toggleTask(id, completed) {
+    setTask(currentTask => {
+      return currentTask.map(todo => {
+        if (todo.id === id) {
+          return { ...todo, completed }
+        }
+        return todo
+      }
+      )
+    })
+  }
   return (
     <>
     <div className="app">
-        <form onChange={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="ToDo">Create New ToDo</label>
-            <input type="text" name="ToDo" id="ToDo" />
+            <input type="text" name="ToDo" id="ToDo" value={newTask}
+              onChange={e => createNewTask(e.target.value)} />
           </div>
           <button>Add</button>
         </form>
         <h1>ToDo List</h1>
         <ul>
-          {
-          <li>
+          {todos.length === 0 && "No ToDos"}
+          {todos.map(todo => {
+            return <li key={todo.id}>
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" checked={todo.completed} onChange={e => toggleTask(todo.id, e.target.checked)} />
+                {todo.title}
               </label>
-              <button>Delete</button>
+              <button onClick={() => deleteTask(todo.id)}>Delete</button>
             </li>
           }
+          )}
         </ul>
       </div>
     </>
