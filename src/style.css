@@ -1,5 +1,4 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,15 +8,16 @@
     border: none;
     transition: 0.3s;
 }
-body
-{
+
+body {
     background: linear-gradient(to bottom right, rgb(255, 0, 251), rgb(4, 0, 255));
     height: 100vh;
     width: 100%;
     background-attachment: fixed;
+    overflow: hidden;
 }
-.app
-{
+
+.app {
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.158);
     backdrop-filter: blur(20px);
@@ -28,32 +28,40 @@ body
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.app label
-{
+
+.app label {
     font-size: 22px;
     text-align: center;
     margin: 0 auto;
     color: white;
 }
-.todo-input
-{
+
+.todo-input {
     width: 100%;
     border-bottom: 1px solid white;
     background-color: transparent;
     margin-top: 20px;
     padding: 10px;
     margin-bottom: 20px;
-}
-.todo-input::placeholder
-{
     color: white;
 }
-ul
-{
-    color: white;
+
+.todo-input::placeholder {
+    color: rgba(255, 255, 255, 0.855);
 }
-.add-btn
-{
+
+ul {
+    color: white;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+ul::-webkit-scrollbar {
+    width: 5px;
+    display: block;
+}
+
+.add-btn {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     padding: 15px;
@@ -61,11 +69,71 @@ ul
     right: 0;
     color: white;
 }
-.add-btn:hover
-{
-    opacity: 0.5;
+
+.delete-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 15px;
+    color: white;
 }
-.container
-{
+
+.add-btn:hover,
+.delete-btn:hover {
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.container {
     position: relative;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+li label {
+    display: flex;
+    align-items: center;
+}
+
+li input {
+    margin-right: 220px;
+    position: absolute;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+input[type="checkbox"] {
+    accent-color: purple;
+}
+
+input[type="checkbox"] {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+input[type="checkbox"]:checked {
+    animation: isCompleted 1s linear;
+}
+@keyframes isCompleted
+{
+    0%
+    {
+        accent-color: purple;
+    }
+    50%
+    {
+        accent-color: rgb(255, 74, 255);
+    }
+    100%
+    {
+        accent-color: purple;
+    }
 }

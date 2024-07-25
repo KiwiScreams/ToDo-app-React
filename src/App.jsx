@@ -34,18 +34,16 @@ export default function App() {
             <label htmlFor="ToDo">Create New ToDo</label>
             <input type="text" name="ToDo" id="ToDo" value={newTask}
               onChange={e => createNewTask(e.target.value)} className="todo-input" placeholder="Create new todo..."/>
-              <button className="add-btn"><i class="fa-solid fa-plus"></i></button>
+              <button className="add-btn"><i className="fa-solid fa-plus"></i></button>
           </div>
         </form>
         <ul>
           {todos.length === 0 && "No ToDos"}
           {todos.map(todo => {
             return <li key={todo.id}>
-              <label>
                 <input type="checkbox" checked={todo.completed} onChange={e => toggleTask(todo.id, e.target.checked)} />
-                {todo.title}
-              </label>
-              <button onClick={() => deleteTask(todo.id)}>Delete</button>
+               <label>{todo.title}</label>
+              <button onClick={() => deleteTask(todo.id)} className="delete-btn"><i className="fa-solid fa-trash"></i></button>
             </li>
           }
           )}
