@@ -137,3 +137,33 @@ input[type="checkbox"]:checked {
         accent-color: purple;
     }
 }
+@media screen and (max-width: 800px)
+{
+    .app
+    {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+        font-size: 22px;
+    }
+    input::placeholder
+    {
+        font-size: 20px;
+    }
+    input
+    {
+        font-size: 30px;
+    }
+    .add-btn {
+        padding: 30px;
+    }
+    .delete-btn {
+        font-size: 25px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

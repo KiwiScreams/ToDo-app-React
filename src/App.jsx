@@ -31,7 +31,7 @@ export default function App() {
       <div className="app">
         <form onSubmit={handleSubmit}>
           <div className="container">
-            <label htmlFor="ToDo">Create New ToDo</label>
+            <label htmlFor="ToDo" className="new">Create New ToDo</label>
             <input type="text" name="ToDo" id="ToDo" value={newTask}
               onChange={e => createNewTask(e.target.value)} className="todo-input" placeholder="Create new todo..."/>
               <button className="add-btn"><i className="fa-solid fa-plus"></i></button>
