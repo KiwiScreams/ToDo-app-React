@@ -3,6 +3,7 @@ import "./style.css"
 export default function App() {
   const [newTask, createNewTask] = useState("")
   const [todos, setTask] = useState([])
+
   function handleSubmit(e) {
     e.preventDefault()
     setTask(currentTask => {
@@ -34,7 +35,7 @@ export default function App() {
             <label htmlFor="ToDo" className="new">Create New ToDo</label>
             <input type="text" name="ToDo" id="ToDo" value={newTask}
               onChange={e => createNewTask(e.target.value)} className="todo-input" placeholder="Create new todo..."/>
-              <button className="add-btn"><i className="fa-solid fa-plus"></i></button>
+              <button className="add-btn" disabled={newTask.trim() === ""}><i className="fa-solid fa-plus"></i></button>
           </div>
         </form>
         <ul>
